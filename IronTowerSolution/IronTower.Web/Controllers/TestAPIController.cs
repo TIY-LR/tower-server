@@ -17,7 +17,7 @@ namespace IronTower.Web.Controllers
         }
 
         // GET api/<controller>/5
-        [ResponseType(typeof(string))]
+        [ResponseType(typeof(int))]
         public IHttpActionResult Get(int id)
         {
             if (id != 0)
