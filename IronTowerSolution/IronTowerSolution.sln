@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronTower.Web", "IronTower.Web\IronTower.Web.csproj", "{492AE8B6-B0AB-43F0-BE47-5B93F2C35CFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{CC11C39C-5D19-4328-A0AA-804F77C27163}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureVMPublishModule.psm1 = PublishScripts\AzureVMPublishModule.psm1
+		PublishScripts\Publish-WebApplicationVM.ps1 = PublishScripts\Publish-WebApplicationVM.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{F103C6AD-E93C-47D8-8BB1-C3072733C93C}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\IronTowerWeb-WAWS-dev.json = PublishScripts\Configurations\IronTowerWeb-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492AE8B6-B0AB-43F0-BE47-5B93F2C35CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492AE8B6-B0AB-43F0-BE47-5B93F2C35CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{492AE8B6-B0AB-43F0-BE47-5B93F2C35CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{492AE8B6-B0AB-43F0-BE47-5B93F2C35CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F103C6AD-E93C-47D8-8BB1-C3072733C93C} = {CC11C39C-5D19-4328-A0AA-804F77C27163}
+	EndGlobalSection
+EndGlobal
