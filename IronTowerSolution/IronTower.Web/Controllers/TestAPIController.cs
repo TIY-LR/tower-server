@@ -11,9 +11,9 @@ namespace IronTower.Web.Controllers
     public class TestAPIController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok("Call successful");
         }
 
         // GET api/<controller>/5
@@ -24,6 +24,7 @@ namespace IronTower.Web.Controllers
                 return Ok(new { value = id });
             return BadRequest("Value not successfully returned.");
         }
+        
 
         // POST api/<controller>
         public void Post([FromBody]string value)
