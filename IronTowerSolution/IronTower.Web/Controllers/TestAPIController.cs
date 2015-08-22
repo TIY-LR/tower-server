@@ -21,8 +21,8 @@ namespace IronTower.Web.Controllers
         public IHttpActionResult Get(int id)
         {
             if (id != 0)
-                return Ok("Value successfully delivered");
-            return BadRequest("No value delivered");
+                return Ok(new { value = id });
+            return BadRequest("Value not successfully returned.");
         }
 
         // POST api/<controller>
