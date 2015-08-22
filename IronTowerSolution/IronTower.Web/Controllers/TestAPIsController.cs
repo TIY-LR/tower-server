@@ -8,12 +8,12 @@ using System.Web.Http.Description;
 
 namespace IronTower.Web.Controllers
 {
-    public class TestAPIController : ApiController
+    public class TestAPIsController : ApiController
     {
         // GET api/<controller>
         public IHttpActionResult Get()
         {
-            return Ok("Call successful");
+            return Ok("Successful");
         }
 
         // GET api/<controller>/5
