@@ -16,9 +16,11 @@ namespace IronTower.Web.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            if (id != 0)
+                return Ok("Value successfully delivered");
+            return BadRequest("No value delivered");
         }
 
         // POST api/<controller>
