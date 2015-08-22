@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace IronTower.Web.Controllers
 {
@@ -16,6 +17,7 @@ namespace IronTower.Web.Controllers
         }
 
         // GET api/<controller>/5
+        [ResponseType(typeof(string))]
         public IHttpActionResult Get(int id)
         {
             if (id != 0)
