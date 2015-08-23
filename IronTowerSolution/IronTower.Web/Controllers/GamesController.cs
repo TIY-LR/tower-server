@@ -81,15 +81,16 @@ namespace IronTower.Web.Controllers
             {
                 Game game = db.Games.FirstOrDefault();
                 GameVM vm = new GameVM();
-                vm.id = game.ID.ToString();
-                vm.periodicRevenue = game.PeriodicRevenue;
-                vm.totalBalance = game.TotalBalance;
+                vm.ID = game.ID.ToString();
+                vm.PeriodicRevenue = game.PeriodicRevenue;
+                vm.TotalBalance = game.TotalBalance;
+
                 foreach (Structure structure in game.Structures)
                 {
-                    GameStructureVM structureVM = new GameStructureVM();
+                GameStructureVM structureVM = new GameStructureVM();
                     structureVM.id = structure.ID;
                     structureVM.type = structure.Type.ToString();
-                    vm.structures.Add(structureVM);
+                    vm.Structures.Add(structureVM);
                 }
                 return Ok(new EmberWrapper { game = vm });
             }
