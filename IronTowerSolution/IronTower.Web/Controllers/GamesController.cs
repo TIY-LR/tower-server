@@ -18,7 +18,9 @@ namespace IronTower.Web.Controllers
     {
         private IronTowerDBContext db = new IronTowerDBContext();
         
-        
+        //[Route("api/purchasestructure/{structure}")]
+        //[ActionName("PurchaseStructure")]
+        [HttpPost]
         public IHttpActionResult PurchaseStructure(string structureType)
         {
             // Once users are implemented, can call "GameExists(id)
@@ -64,112 +66,27 @@ namespace IronTower.Web.Controllers
 
                     default:
                         // Determine best error type to use for StructureNotFound
-                        return NotFound();
+                        return BadRequest();
                 }
                 //Change returns for error
 
             }
         }
 
-        
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [Route(Name="Me")]
+        //[Route(Name="api/games/me")]
+        //[ActionName("Me")]
+        [HttpGet]
         public IHttpActionResult Me()
         {
-            Game game = db.Games.FirstOrDefault();
-            GameVM vm = new GameVM();
-            vm.id = game.ID.ToString();
-            vm.periodicRevenue = game.PeriodicRevenue;
-            vm.totalBalance = game.TotalBalance;
-            return Ok(new EmberWrapper{ game = vm });
-        }
-
-        [ResponseType(typeof(Game))]
-        public IHttpActionResult GetGame()
-        {
-            return Ok(db.Games.FirstOrDefault());
-            //if (GameExists(id))
-            //{
-            //    Game game = db.Games.Find(id);
-            //    return Ok(game);
-            //}
-            //return NotFound();
-        }
-
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutGame(int id, Game game)
-        {
-            if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                Game game = db.Games.FirstOrDefault();
+                GameVM vm = new GameVM();
+                vm.id = game.ID.ToString();
+                vm.periodicRevenue = game.PeriodicRevenue;
+                vm.totalBalance = game.TotalBalance;
+                return Ok(new EmberWrapper { game = vm });
             }
-
-            if (id != game.ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(game).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GameExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        [ResponseType(typeof(Game))]
-        public IHttpActionResult PostGame(Game game)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Games.Add(game);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = game.ID }, game);
-        }
-
-        [ResponseType(typeof(Game))]
-        public IHttpActionResult DeleteGame(int id)
-        {
-            Game game = db.Games.Find(id);
-            if (game == null)
-            {
-                return NotFound();
-            }
-
-            db.Games.Remove(game);
-            db.SaveChanges();
-
-            return Ok(game);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
 
         private bool GameExists(int id)

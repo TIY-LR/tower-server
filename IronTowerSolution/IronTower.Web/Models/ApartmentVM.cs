@@ -13,5 +13,7 @@ namespace IronTower.Web.Models
         public int cost { get; set; }
         public bool purchased { get; set; }
         public int floor { get; set; }
+        public int income { get; set; }
+        public int upKeep { get; set; }
     }
 }

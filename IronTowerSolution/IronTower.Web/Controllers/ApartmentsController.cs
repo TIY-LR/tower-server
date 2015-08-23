@@ -28,6 +28,8 @@ namespace IronTower.Web.Controllers
                     vm.type = "apartment";
                     vm.cost = structures[i].InitialCost;
                     vm.floor = structures[i].Floor;
+                    vm.income = structures[i].Income;
+                    vm.upKeep = structures[i].UpKeep;
                     apartments.Add(vm);
                 }
 

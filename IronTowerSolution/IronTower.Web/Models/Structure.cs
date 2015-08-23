@@ -22,11 +22,15 @@ namespace IronTower.Web.Models
         public bool IsResidence { get; set; }
         public int SupportedPopulation { get; set; }
 
+        public Structure() { }
+
         public Structure(StructureType structureType, int _floor)
         {
         IronTowerDBContext db = new IronTowerDBContext();
 
             Game game = db.Games.FirstOrDefault();
+            this.Game = game;
+
             switch (structureType)
             {
                 case StructureType.Laundry:
@@ -76,7 +80,6 @@ namespace IronTower.Web.Models
                 default:
                     break;
             }
-            
         }
     }
 }

@@ -27,6 +27,8 @@ namespace IronTower.Web.Models
                     vm.type = "business";
                     vm.cost = structures[i].InitialCost;
                     vm.floor = structures[i].Floor;
+                    vm.income = structures[i].Income;
+                    vm.upKeep = structures[i].UpKeep;
                     businesses.Add(vm);
                 }
 
