@@ -20,9 +20,9 @@ namespace IronTower.Web.Controllers
 
         
 
-        [Route("api/games/purchasestructure")]
+        [Route("api/games/purchasestructure/")]
         [HttpPost]
-        public IHttpActionResult PurchaseStructure(string structureType)
+        public IHttpActionResult PurchaseStructure([FromBody]string structureType)
         {
             // Once users are implemented, can call "GameExists(id)
             if (true)
