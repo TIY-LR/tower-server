@@ -274,6 +274,7 @@
     <Compile Include="Models\BusinessVM.cs" />
     <Compile Include="Models\EmberWrapper.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameStructureVM.cs" />
     <Compile Include="Models\GameVM.cs" />
     <Compile Include="Models\Structure.cs" />
     <Compile Include="Models\IdentityModels.cs" />

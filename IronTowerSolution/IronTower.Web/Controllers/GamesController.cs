@@ -73,7 +73,6 @@ namespace IronTower.Web.Controllers
             }
         }
 
-
         //[Route(Name="api/games/me")]
         //[ActionName("Me")]
         [HttpGet]
@@ -85,6 +84,13 @@ namespace IronTower.Web.Controllers
                 vm.id = game.ID.ToString();
                 vm.periodicRevenue = game.PeriodicRevenue;
                 vm.totalBalance = game.TotalBalance;
+                foreach (Structure structure in game.Structures)
+                {
+                    GameStructureVM structureVM = new GameStructureVM();
+                    structureVM.id = structure.ID;
+                    structureVM.type = structure.Type.ToString();
+                    vm.structures.Add(structureVM);
+                }
                 return Ok(new EmberWrapper { game = vm });
             }
         }
