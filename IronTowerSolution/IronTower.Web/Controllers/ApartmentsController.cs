@@ -27,6 +27,7 @@ namespace IronTower.Web.Controllers
                     vm.purchased = true;
                     vm.type = "apartment";
                     vm.cost = structures[i].InitialCost;
+                    vm.floor = structures[i].Floor;
                     apartments.Add(vm);
                 }
 

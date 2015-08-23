@@ -17,24 +17,8 @@ namespace IronTower.Web.Controllers
     public class GamesController : ApiController
     {
         private IronTowerDBContext db = new IronTowerDBContext();
-
-        /// <summary>
-        /// This call should be passed an ID representing a particular user, and returns a 404 if it cannot retrieve the users game state, but otherwise returns the total currency the user has accured up to this pont.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>type=int</returns>
-        public IHttpActionResult GetAccruedCurrency()
-        {
-            //if (GameExists(id))
-            if (true)
-            {
-                int gameCurrency = db.Users.FirstOrDefault().Game.TotalBalance;
-                return Ok(gameCurrency);
-            }
-            return NotFound();
-        }
-
-        [HttpPost]
+        
+        
         public IHttpActionResult PurchaseStructure(string structureType)
         {
             // Once users are implemented, can call "GameExists(id)
@@ -85,7 +69,6 @@ namespace IronTower.Web.Controllers
                 //Change returns for error
 
             }
-            return NotFound();
         }
 
         
@@ -94,7 +77,8 @@ namespace IronTower.Web.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public IHttpActionResult Get(string id)
+        [Route(Name="Me")]
+        public IHttpActionResult Me()
         {
             Game game = db.Games.FirstOrDefault();
             GameVM vm = new GameVM();

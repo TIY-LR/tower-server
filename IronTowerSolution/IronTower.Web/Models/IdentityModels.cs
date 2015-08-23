@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace IronTower.Web.Models
 {
@@ -32,7 +33,7 @@ namespace IronTower.Web.Models
             return new IronTowerDBContext();
         }
 
-        public System.Data.Entity.DbSet<Game> Games { get; set; }
-        public System.Data.Entity.DbSet<Structure> Structures { get; set; }
+        public virtual DbSet<Game> Games { get; set; }
+        public virtual DbSet<Structure> Structures { get; set; }
     }
 }

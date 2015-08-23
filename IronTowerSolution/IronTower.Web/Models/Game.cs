@@ -10,18 +10,7 @@ namespace IronTower.Web.Models
 
         public int ID { get; set; }
         public int TotalBalance { get; set; }
-        public int PeriodicRevenue
-        {
-            get
-            {
-                int sum = 0;
-                foreach (Structure structure in this.Structures)
-                {
-                    sum += structure.Income;
-                }
-                return sum;
-            }
-        }
+        public int PeriodicRevenue { get; set; }
         public virtual ICollection<Structure> Structures { get; set; }
 
         public int TotalPopulation(Game game)
@@ -60,6 +49,7 @@ namespace IronTower.Web.Models
 
             Structure structure = new Structure(strucureType, game.TotalFloors(game) + 1);
             game.Structures.Add(structure);
+            game.PeriodicRevenue += structure.Income;
             db.SaveChanges();
             return true;
         }

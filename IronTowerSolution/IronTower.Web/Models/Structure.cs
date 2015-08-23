@@ -11,6 +11,7 @@ namespace IronTower.Web.Models
             AmusementPark,
             Residence
         }
+        public Game Game { get; set; }
         public StructureType Type { get; set; }
         public int ID { get; set; }
         public int Floor { get; set; }
@@ -50,7 +51,6 @@ namespace IronTower.Web.Models
                     this.UpKeep = 1;
                     break;
 
-
                 case StructureType.AmusementPark:
                     this.Floor = _floor;
                     this.Income = 3;
@@ -76,17 +76,7 @@ namespace IronTower.Web.Models
                 default:
                     break;
             }
-            //case "Laundry"
-            //Game.StructureType.Laundry:
-            //    break;
-            //case Game.StructureType.Restaurant:
-            //    break;
-            //case Game.StructureType.AmusementPark:
-            //    break;
-            //case Game.StructureType.Residence:
-            //    break;
-            //default:
-            //    break;
+            
         }
     }
 }

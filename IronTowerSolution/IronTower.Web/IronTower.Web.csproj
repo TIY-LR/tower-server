@@ -246,6 +246,26 @@
     <Compile Include="Migrations\201508230303552_AddedViewModels.Designer.cs">
       <DependentUpon>201508230303552_AddedViewModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508230343366_AddedViewModels1.cs" />
+    <Compile Include="Migrations\201508230343366_AddedViewModels1.Designer.cs">
+      <DependentUpon>201508230343366_AddedViewModels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508230344152_AddedAnEmberWrapper.cs" />
+    <Compile Include="Migrations\201508230344152_AddedAnEmberWrapper.Designer.cs">
+      <DependentUpon>201508230344152_AddedAnEmberWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508230356293_FixedACalculatedProperty.cs" />
+    <Compile Include="Migrations\201508230356293_FixedACalculatedProperty.Designer.cs">
+      <DependentUpon>201508230356293_FixedACalculatedProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508230404499_FixedVirtualDBSets.cs" />
+    <Compile Include="Migrations\201508230404499_FixedVirtualDBSets.Designer.cs">
+      <DependentUpon>201508230404499_FixedVirtualDBSets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508230412141_StructureGame.cs" />
+    <Compile Include="Migrations\201508230412141_StructureGame.Designer.cs">
+      <DependentUpon>201508230412141_StructureGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,6 +310,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\IronTower.pubxml" />
     <None Include="Properties\PublishProfiles\IronTowerWeb3822.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -341,6 +362,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508230303552_AddedViewModels.resx">
       <DependentUpon>201508230303552_AddedViewModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508230343366_AddedViewModels1.resx">
+      <DependentUpon>201508230343366_AddedViewModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508230344152_AddedAnEmberWrapper.resx">
+      <DependentUpon>201508230344152_AddedAnEmberWrapper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508230356293_FixedACalculatedProperty.resx">
+      <DependentUpon>201508230356293_FixedACalculatedProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508230404499_FixedVirtualDBSets.resx">
+      <DependentUpon>201508230404499_FixedVirtualDBSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508230412141_StructureGame.resx">
+      <DependentUpon>201508230412141_StructureGame.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
