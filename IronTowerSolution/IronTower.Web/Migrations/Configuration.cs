@@ -37,7 +37,7 @@ namespace IronTower.Web.Migrations
                 new Game
                 {
                     ID = 1,
-                    TotalBalance = 5,
+                    TotalBalance = 10,
                 }
                 );
             context.Structures.AddOrUpdate(x => x.Type,
