@@ -17,9 +17,36 @@ namespace IronTower.Web.Controllers
     public class GamesController : ApiController
     {
         private IronTowerDBContext db = new IronTowerDBContext();
-        
-        //[Route("api/purchasestructure/{structure}")]
-        //[ActionName("PurchaseStructure")]
+
+        [Route("api/businesses")]
+        [HttpGet]
+        IHttpActionResult GetBusinessses()
+        {
+            List<BusinessVM> businesses = new List<BusinessVM>();
+            List<Structure> structures = db.Games.FirstOrDefault().Structures.ToList();
+            if (structures == null)
+                return NotFound();
+            for (int i = 0; i < structures.Count(); i++)
+            {
+                if (!structures[i].IsResidence)
+                {
+                    BusinessVM vm = new BusinessVM();
+                    vm.id = structures[i].ID;
+                    vm.capacity = structures[i].SupportedPopulation;
+                    vm.purchased = true;
+                    vm.type = "business";
+                    vm.cost = structures[i].InitialCost;
+                    vm.floor = structures[i].Floor;
+                    vm.income = structures[i].Income;
+                    vm.upKeep = structures[i].UpKeep;
+                    businesses.Add(vm);
+                }
+
+            }
+            return Ok(new EmberWrapper { businesses = businesses });
+        }
+
+        [Route("api/purchasestructure")]
         [HttpPost]
         public IHttpActionResult PurchaseStructure(string structureType)
         {
@@ -65,18 +92,14 @@ namespace IronTower.Web.Controllers
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.Residence));
 
                     default:
-                        // Determine best error type to use for StructureNotFound
                         return BadRequest();
                 }
-                //Change returns for error
-
             }
         }
 
-        //[Route(Name="api/games/me")]
-        //[ActionName("Me")]
+        [Route(Name="api/games/me")]
         [HttpGet]
-        public IHttpActionResult Me()
+        public IHttpActionResult GetMe()
         {
             {
                 Game game = db.Games.FirstOrDefault();
@@ -84,6 +107,7 @@ namespace IronTower.Web.Controllers
                 vm.ID = game.ID.ToString();
                 vm.PeriodicRevenue = game.PeriodicRevenue;
                 vm.TotalBalance = game.TotalBalance;
+                vm.UnemployedPeople = game.TotalPopulation(game) - game.ConsumedPopulation(game);
 
                 foreach (Structure structure in game.Structures)
                 {

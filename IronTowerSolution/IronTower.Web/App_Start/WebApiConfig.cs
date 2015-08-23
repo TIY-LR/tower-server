@@ -25,9 +25,16 @@ namespace IronTower.Web
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //config.Routes.MapHttpRoute
+            //    (
+            //    name: "PurchaseStructure",
+            //    routeTemplate: "api/games/purchasestructure/{structure}",
+            //    defaults: new {controller = "Games", action = "PurchaseStructure", structure = "residence" }
+            //    );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new {id = RouteParameter.Optional }
             );
         }

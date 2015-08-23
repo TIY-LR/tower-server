@@ -15,6 +15,7 @@ namespace IronTower.Web.Models
         public string ID { get; set; }
         public int PeriodicRevenue { get; set; }
         public int TotalBalance { get; set; }
+        public int UnemployedPeople { get; set; }
         public ICollection<GameStructureVM> Structures {get;set;}
     }
 }

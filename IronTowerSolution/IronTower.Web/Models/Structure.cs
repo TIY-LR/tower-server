@@ -28,8 +28,8 @@ namespace IronTower.Web.Models
         {
         IronTowerDBContext db = new IronTowerDBContext();
 
-            Game game = db.Games.FirstOrDefault();
-            this.Game = game;
+         //   Game game = db.Games.FirstOrDefault();
+        //    this.Game = game;
 
             switch (structureType)
             {
