@@ -7,9 +7,11 @@ using Microsoft.AspNet.Identity.Owin;
 namespace IronTower.Web.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public class IronTowerUser : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
+        public Game Game { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<IronTowerUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
@@ -18,16 +20,19 @@ namespace IronTower.Web.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class IronTowerDBContext : IdentityDbContext<IronTowerUser>
     {
-        public ApplicationDbContext()
+        public IronTowerDBContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
         
-        public static ApplicationDbContext Create()
+        public static IronTowerDBContext Create()
         {
-            return new ApplicationDbContext();
+            return new IronTowerDBContext();
         }
+
+        public System.Data.Entity.DbSet<Game> Games { get; set; }
+        public System.Data.Entity.DbSet<Structure> Structures { get; set; }
     }
 }

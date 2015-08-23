@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IronTower.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,19 +11,23 @@ namespace IronTower.Web.Controllers
 {
     public class TestAPIsController : ApiController
     {
+        IronTowerDBContext db = new IronTowerDBContext();
         // GET api/<controller>
         public IHttpActionResult Get()
         {
-            return Ok("Successful");
+            Game game = db.Games.FirstOrDefault();
+            return Ok(game);
         }
 
         // GET api/<controller>/5
         [ResponseType(typeof(int))]
         public IHttpActionResult Get(int id)
         {
-            if (id != 0)
-                return Ok(new { value = id });
-            return BadRequest("Value not successfully returned.");
+            Game game = db.Games.FirstOrDefault();
+            return Ok(game);
+            //if (id != 0)
+            //    return Ok(new { value = id });
+            //return BadRequest("Value not successfully returned.");
         }
         
 
