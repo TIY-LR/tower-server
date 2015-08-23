@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace IronTower.Web.Controllers
 {
-    public class ApartmentsController : ApiController
+    public class ResidencesController : ApiController
     {
         IronTowerDBContext db = new IronTowerDBContext();
         IHttpActionResult Get()
