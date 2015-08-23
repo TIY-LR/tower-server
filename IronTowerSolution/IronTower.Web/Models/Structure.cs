@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace IronTower.Web.Models
 {
@@ -13,6 +14,21 @@ namespace IronTower.Web.Models
         }
         public Game Game { get; set; }
         public StructureType Type { get; set; }
+        [NotMapped]
+        public string EmberType
+        {
+            get
+            {
+                if (Type == StructureType.Residence)
+                {
+                    return "Residence";
+                }
+                else
+                {
+                    return "Business";
+                }
+            }
+        }
         public int ID { get; set; }
         public int Floor { get; set; }
         public int Income { get; set; }
@@ -26,10 +42,10 @@ namespace IronTower.Web.Models
 
         public Structure(StructureType structureType, int _floor)
         {
-        IronTowerDBContext db = new IronTowerDBContext();
+            IronTowerDBContext db = new IronTowerDBContext();
 
-         //   Game game = db.Games.FirstOrDefault();
-        //    this.Game = game;
+            //   Game game = db.Games.FirstOrDefault();
+            //    this.Game = game;
 
             switch (structureType)
             {

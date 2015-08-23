@@ -18,12 +18,13 @@ namespace IronTower.Web.Controllers
     {
         private IronTowerDBContext db = new IronTowerDBContext();
 
-        
+
 
         [Route("api/games/purchasestructure/")]
         [HttpPost]
-        public IHttpActionResult PurchaseStructure([FromBody]string structureType)
+        public IHttpActionResult PurchaseStructure(EmberWrapper structure)
         {
+            string structureType = structure.structureType;
             // Once users are implemented, can call "GameExists(id)
             if (true)
             {
@@ -33,34 +34,22 @@ namespace IronTower.Web.Controllers
                 switch (structureType.ToLower().Trim())
                 {
                     case "laundry":
-                    case "laundrymat":
-                    case "laundromat":
                         currencyRequired = 1;
                         populationNeeded = 1;
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.Laundry));
 
                     case "restaurant":
-                    case "restarant":
-                    case "restauraunt":
-                    case "resturant":
                         currencyRequired = 1;
                         populationNeeded = 3;
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.Restaurant));
 
 
                     case "amusementpark":
-                    case "amusement park":
-                    case "park":
-                    case "amusement":
                         currencyRequired = 3;
                         populationNeeded = 1;
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.AmusementPark));
 
                     case "residence":
-                    case "resedence":
-                    case "apartment":
-                    case "apartments":
-                    case "houses":
                         currencyRequired = 1;
                         populationNeeded = 0;
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.Residence));
@@ -70,8 +59,34 @@ namespace IronTower.Web.Controllers
                 }
             }
         }
+        [Route("api/businesses/")]
+        [HttpGet]
+        IHttpActionResult GetBusinessses()
+        {
+            List<BusinessVM> businesses = new List<BusinessVM>();
+            List<Structure> structures = db.Games.FirstOrDefault().Structures.ToList();
+            if (structures == null)
+                return NotFound();
+            for (int i = 0; i < structures.Count(); i++)
+            {
+                if (!structures[i].IsResidence)
+                {
+                    BusinessVM vm = new BusinessVM();
+                    vm.id = structures[i].ID;
+                    vm.capacity = structures[i].SupportedPopulation;
+                    vm.purchased = true;
+                    vm.type = "business";
+                    vm.cost = structures[i].InitialCost;
+                    vm.floor = structures[i].Floor;
+                    vm.income = structures[i].Income;
+                    vm.upKeep = structures[i].UpKeep;
+                    businesses.Add(vm);
+                }
 
-        [Route("api/games/me")]
+            }
+            return Ok(new EmberWrapper { businesses = businesses });
+        }
+        [Route("api/games/me/")]
         [HttpGet]
         public IHttpActionResult Me()
         {
@@ -87,7 +102,7 @@ namespace IronTower.Web.Controllers
                 {
                 GameStructureVM structureVM = new GameStructureVM();
                     structureVM.id = structure.ID;
-                    structureVM.type = structure.Type.ToString();
+                    structureVM.type = structure.EmberType;
                     vm.Structures.Add(structureVM);
                 }
                 return Ok(new EmberWrapper { game = vm });

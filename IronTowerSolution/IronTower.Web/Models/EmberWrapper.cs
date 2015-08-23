@@ -10,5 +10,6 @@ namespace IronTower.Web.Models
         public ICollection<ApartmentVM> apartments { get; set; }
         public ICollection<BusinessVM> businesses { get; set; }
         public GameVM game { get; set; }
+        public string structureType { get; set; }
     }
 }
