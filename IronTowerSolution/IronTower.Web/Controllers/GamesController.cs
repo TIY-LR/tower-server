@@ -42,7 +42,7 @@ namespace IronTower.Web.Controllers
                     case "restaurant":
                     case "restarant":
                     case "restauraunt":
-                    case "restrant":
+                    case "resturant":
                         currencyRequired = 1;
                         populationNeeded = 3;
                         return Ok(Game.PurchaseBuilding(currencyRequired, populationNeeded, Structure.StructureType.Restaurant));
@@ -71,7 +71,7 @@ namespace IronTower.Web.Controllers
             }
         }
 
-        [Route(Name="api/games/me")]
+        [Route("api/games/me")]
         [HttpGet]
         public IHttpActionResult Me()
         {
